@@ -1,0 +1,21 @@
+<div id="wrap">
+    <h1 class="title" style="font-style: initial; color: darkred">
+        {{message()}}
+    </h1>
+
+    <div class="picture-div" *ngIf="this.picture()">
+        <img class='picdiv' src="assets/{{this.picture()}}">
+    </div>
+    <div class="picture-div" *ngIf="this.pictures()">
+        <span *ngFor="let pic of this.pictures(); index as i;">
+            <p>Step {{i+1}}</p>
+            <img class='picdiv' src="assets/{{pic}}">
+        </span>
+    </div>
+
+
+</div>
+
+<mat-action-list dense id="button-list" *ngFor="let option of this.machine().state.nextEvents; index as i;">
+    <button mat-list-item (click)="onclick(option)">{{option}}</button>
+</mat-action-list>
